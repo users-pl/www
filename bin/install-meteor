@@ -4,4 +4,4 @@ nvm use
 
 VERSION=""
 VERSION=$(meteor --version)
-[ "$VERSION" == "" ] && ( curl https://install.meteor.com/ | sh )
+[ "$VERSION" == "" ] && ( yes | curl https://install.meteor.com/ | sh )
