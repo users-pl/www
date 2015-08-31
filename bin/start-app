@@ -21,8 +21,6 @@ NODE=$(node -v)
 echo "$DATE : checking node ..." > $LOG
   [[ $NODE != $NODEV ]] && $ROOT/bin/install-nvm >> $LOG 2>&1
 
-echo "$DATE : checking meteor ..." >> $LOG
-  $ROOT/bin/install-meteor >> $LOG 2>&1
 PID=""
 PID=$(ps -ef |grep $app | awk '{ print $2 }')
   echo "$DATE : Found inactive $app. Starting ..." >> $LOG
