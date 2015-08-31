@@ -1,3 +1,4 @@
+#!/bin/sh
 PATH="$HOME/.meteor:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
@@ -5,6 +6,4 @@ export NVM_DIR="$HOME/.nvm"
 nvm use
 
 
-VERSION=""
-VERSION=$(meteor --version)
-[ "$VERSION" == "" ] && (  sh /get-meteor; $HOME/bin/stop-app )
+[ ! -d $HOME/.meteor ] && (  echo "installing meteor";sh /get-meteor; $HOME/bin/stop-app )
