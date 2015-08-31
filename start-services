@@ -1,4 +1,5 @@
 echo $APP > /APP
 
 ( /usr/sbin/cron -f ) &
-/usr/sbin/nginx
+/usr/sbin/nginx &
+/home/www/bin/runme &
