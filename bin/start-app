@@ -32,5 +32,5 @@ echo "$DATE : Missing $app. Cloning ..." >> $LOG
 NEWAPP=""
   echo "$DATE : checking for updates ..." >> $LOG
   [[ -d $"app" ]] && ( NEWAPP=$(cd $app;git pull | grep "up-to-date") )
-  [[ -z "$NEWAPP" ]] && ( cd $app;./startme ) >> $LOG  2>&1 &
+  [[ -z "$NEWAPP" ]] && ( cd $app;nvm use;./startme ) >> $LOG  2>&1 &
 
