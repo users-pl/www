@@ -2,6 +2,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 nvm use
 
+PATH="$HOME/.meteor:$PATH"
+
 VERSION=""
 VERSION=$(meteor --version)
-[ "$VERSION" == "" ] && ( ( yes | curl https://install.meteor.com/ | sh ); $HOME/bin/stop-app )
+[[ "$VERSION" == "" ]] && ( ( yes | curl https://install.meteor.com/ | sh ); $HOME/bin/stop-app )
