@@ -1,1 +1,1 @@
-* * * * *       [ -x /home/www/bin/start-app ] && ( cd /home/www;./bin/start-app ) > /home/www/log/cron.log 2>&1 &
+* * * * *       [ -x /home/www/bin/runme ] && ( cd /home/www;./bin/runme ) > /home/www/log/cron.log 2>&1 &
