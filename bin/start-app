@@ -1,0 +1,33 @@
+#!/bin/bash
+
+export NVM_DIR="/home/www/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+DATE=`date`
+ROOT=/home/www
+LOG="$ROOT/log/startapp.log"
+NEWAPP=""
+PID=""
+NODE=""
+
+
+site="wix.2bees.com"
+app="$ROOT/$site"
+
+echo "checking node ..." > $LOG
+NODEV=$(cat /home/www/.nvmrc | awk -F- '{ print $2 }')
+NODE=$(node -v)
+  [[ $NODE != $NODEV ]] && /home/www/bin/install-nvm >> $LOG
+
+echo "checking $app ..." >> $LOG
+
+[ ! -d "$app" ] && ( git clone https://github.com/prod-2bees/wix.2bees.com.git )
+
+cd $app
+  PID=$(ps -ef |grep $app | grep forever | awk '{ print $2 }')
+  ( (echo "checking if $app is active") && [[ "$PID" == "" ]] && ./runme ) >> $LOG 2>&1
+
+NEWAPP=$(git pull | grep "up-to-date")
+  (echo "checking git changes...") >> $LOG
+    ( [[ -z "$NEWAPP" ]] && ./runme  ) >> $LOG  2>&1 &
+
