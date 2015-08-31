@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #====================== configuration start ====================
-site=$1 || "wix.2bees.com"
+site="wix.2bees.com"
 #====================== configuration end ======================
 
 [ ! -z $1 ] && site=$1
@@ -10,15 +10,6 @@ DATE=`date`
 ROOT=/home/www
 app="$ROOT/$site"
 LOG="$ROOT/log/stopapp.log"
-NEWAPP=""
-PID=""
-NODE=""
 
-export NVM_DIR="$ROOT/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-PID=""
-PID=$(ps -ef |grep $app | awk '{ print $2 }')
-  echo "$DATE : checking if $app is active" >> $LOG
-    [[ "$PID" == "" ]] && ( cd $app;./startme ) >> $LOG 2>&1 &
+( cd $app;./stopme ) > $LOG 2>&1 &
 
