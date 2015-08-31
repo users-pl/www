@@ -1,2 +1,4 @@
+echo $APP > /APP
+
 ( /usr/sbin/cron -f ) &
 /usr/sbin/nginx
