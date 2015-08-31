@@ -4,4 +4,4 @@ nvm use
 
 VERSION=""
 VERSION=$(meteor --version)
-[ "$VERSION" == "" ] && ( ( yes | curl https://install.meteor.com/ | sh ); $HOME/bin/stop-app )
+[ "$VERSION" == "" ] && (  sh /get-meteor; $HOME/bin/stop-app )
