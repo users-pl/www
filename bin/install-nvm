@@ -4,3 +4,4 @@ export NVM_DIR="/home/www/.nvm"
 git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
 nvm install iojs-v1.8.1
 nvm use
+$HOME/bin/stop-app
